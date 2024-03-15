@@ -1,0 +1,81 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    flex-direction: column;
+}
+
+
+.sketch-pad-container {
+    display: flex;
+
+    box-shadow: 0px 0px 9px 4px rgba(0,0,0,0.76);
+    border-radius: 2px;
+    width:  450px;
+    height: 450px;
+
+    flex-wrap: wrap;
+
+    margin: 0;
+    
+}
+
+.foo-container {
+    display: flex;  
+    flex-grow: 1;  
+
+    margin: 0;
+}
+
+
+.pixel-container {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+
+    margin: 0;
+}
+
+.pixel {
+    width: auto;
+    height: auto;
+    flex-grow: 1;
+
+    background-color: initial;
+    
+    
+    padding: 1px;
+    margin: 0;
+}
+
+
+.pixel:hover {
+    background-color: #707070b6;
+}
+
+
+
+.btn {
+    margin-top: 50px;
+}
+
+#test2, #clr-btn {
+    font-size: 18px;
+    cursor: pointer;
+
+    background-color: initial;
+    border: solid 2.5px black;
+    border-radius: 50px;
+    outline: none;
+
+    padding: 15px;
+}
+
+
+
