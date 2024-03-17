@@ -1,21 +1,22 @@
-const faaBtn = document.querySelector('#test2');
 const sketchPad = document.querySelector('.sketch-pad-container');
-const fooBar = document.querySelector('.foo-container');
-const rainbowBtn = document.querySelector('#rainbow-color');
+const gridSizeBtn = document.querySelector('#grid-size-button');
+const rainbowBtn = document.querySelector('#rainbow-button');
 const colorPickerBtn = document.querySelector('#color-picker');
+const eraseBtn = document.querySelector('#erase-button');
+const clearBtn = document.querySelector('#clear-button');
 
-fooBar.ondragstart = function() {
+sketchPad.ondragstart = function() {
     return false;
 } 
 
 
 
 let userInputSize;
-faaBtn.addEventListener('click', () => {  
+gridSizeBtn.addEventListener('click', () => {  
     
-    if (fooBar.firstChild) {
-        while (fooBar.firstChild) {
-            fooBar.removeChild(fooBar.firstChild);
+    if (sketchPad.firstChild) {
+        while (sketchPad.firstChild) {
+            sketchPad.removeChild(sketchPad.firstChild);
         }   
     }
 
@@ -31,16 +32,16 @@ faaBtn.addEventListener('click', () => {
 
 let pixelContainer;
 let pixel;
-function openSketchPad(dimension) {
+function openSketchPad(gridSize) {
 
-    if (dimension) {
+    if (gridSize) {
 
-        for (let i = 1; i <= dimension; i++) {
+        for (let i = 1; i <= gridSize; i++) {
             pixelContainer = document.createElement('div');
             pixelContainer.className = 'pixel-container';
-            fooBar.appendChild(pixelContainer)
+            sketchPad.appendChild(pixelContainer)
 
-            for (let j = 1; j <= dimension; j++){
+            for (let j = 1; j <= gridSize; j++){
                 pixel = document.createElement('div');
                 pixel.className = 'pixel';
                 pixelContainer.appendChild(pixel);
@@ -65,69 +66,67 @@ function paintPixel() {
             pixel.style.backgroundColor = getColor();
         });
 
-
         pixel.addEventListener('mouseover', (e) => {
             if (e.buttons === 1) {
                 pixel.style.backgroundColor = getColor();
             }
         });
-
-
     });
+
 }
-
-
-
-let isRainbow = false;
-let isPickedColor = false;
-
-rainbowBtn.addEventListener('click', () => {    
-    isRainbow = true
-    rainbowBtn.style.backgroundColor = 'black';
-    rainbowBtn.style.color = 'white';
-});
-
-colorPickerBtn.addEventListener('click', () => {
-    isPickedColor = true;
-    isRainbow = false;
-    rainbowBtn.style.backgroundColor = 'white';
-    rainbowBtn.style.color = 'black';
-});
 
 function getColor() {
+    
+    if (isErase) return 'white';
+    if (isRainbow) return getRainbowColor();
+    if (isPickedColor) return colorPickerBtn.value;
 
-    let color;
-
-    if (isRainbow) {
-        return color = rainbowColor();
-    }
-
-    if (isPickedColor) {
-        return color = colorPickerBtn.value;
-    }
-
+    return 'black';
 }
 
-
-
-function resetValue() {
-    isRainbow = false;
-    isPickedColor = false;
-}
-
-
-
-function rainbowColor() {
+function getRainbowColor() {
     const color = ['red', 'orange', 'yellow', 'green', 'blue','indigo', 'violet', 'pink'];
     let randomchoice = Math.floor(Math.random() * color.length);
     return color[randomchoice];
 }
 
 
+let isRainbow = false;
+let isPickedColor = false;
+let isErase = false;
 
-const clearBtn = document.querySelector('#clr-btn');
-clearBtn.addEventListener('click', () => {
+rainbowBtn.addEventListener('click', () => {    
+    isRainbow = true
+    isErase = false;
+    rainbowBtn.style.backgroundColor = 'black';
+    rainbowBtn.style.color = 'white';
+    eraseBtn.style.backgroundColor = 'white';
+    eraseBtn.style.color = 'black';
+});
+
+colorPickerBtn.addEventListener('click', () => {
+    isPickedColor = true;
+    isRainbow = false;
+    isErase = false;
+    rainbowBtn.style.backgroundColor = 'white';
+    rainbowBtn.style.color = 'black';
+    eraseBtn.style.backgroundColor = 'white';
+    eraseBtn.style.color = 'black';
+});
+
+eraseBtn.addEventListener('click' , () => {
+    isErase = true;
+    isRainbow = false;
+    isPickedColor = false;
+    eraseBtn.style.backgroundColor = 'black';
+    eraseBtn.style.color = 'white';
+    rainbowBtn.style.backgroundColor = 'white';
+    rainbowBtn.style.color = 'black';
+});
+
+clearBtn.addEventListener('mousedown', () => {
     pixelList.forEach((pixel) => {
-        pixel.style.backgroundColor = 'initial';
+        pixel.style.backgroundColor = 'white';
+        pixel.style.cssText = '.pixel:hover {background-color: #707070b6}';
     });
 });
