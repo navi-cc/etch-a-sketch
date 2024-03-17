@@ -91,6 +91,7 @@ function getRainbowColor() {
 }
 
 
+
 let isRainbow = false;
 let isPickedColor = false;
 let isErase = false;

@@ -2,12 +2,14 @@
     box-sizing: border-box;
 }
 
+
 body {
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;    
 }
+
 
 .buttons {
     display: flex;
@@ -22,6 +24,7 @@ body {
     margin-bottom: 50px;
 }
 
+
 .midline-container {
     display: flex;
     flex-direction: column;
@@ -29,7 +32,6 @@ body {
 
     gap: 50px;
 }
-
 
 
 .wrapper {
@@ -46,6 +48,7 @@ body {
     
 }
 
+
 .sketch-pad-container {
     display: flex;  
     flex-grow: 1;  
@@ -61,6 +64,7 @@ body {
 
     margin: 0;
 }
+
 
 .pixel {
    
@@ -80,10 +84,10 @@ body {
 }
 
 
-
 .btn {
     margin-top: 50px;
 }
+
 
 button {
     font-size: 18px;
