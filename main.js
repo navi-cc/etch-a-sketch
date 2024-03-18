@@ -77,11 +77,13 @@ function paintPixel() {
 
 function getColor() {
     
-    if (isErase) return 'white';
-    if (isRainbow) return getRainbowColor();
-    if (isPickedColor) return colorPickerBtn.value;
+    let color; 
 
-    return 'black';
+    if (isErase) color = 'white';
+    if (isRainbow) color =  getRainbowColor();
+    if (isPickedColor) color = colorPickerBtn.value;
+
+    return color || 'black';
 }
 
 function getRainbowColor() {
