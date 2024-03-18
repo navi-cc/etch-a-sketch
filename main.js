@@ -94,13 +94,14 @@ function getRainbowColor() {
 
 
 
-let isRainbow = false;
-let isPickedColor = false;
-let isErase = false;
+let isRainbow;
+let isPickedColor;
+let isErase;
 
 rainbowBtn.addEventListener('click', () => {    
     isRainbow = true
     isErase = false;
+    isPickedColor = false;
     rainbowBtn.style.backgroundColor = 'black';
     rainbowBtn.style.color = 'white';
     eraseBtn.style.backgroundColor = 'white';
